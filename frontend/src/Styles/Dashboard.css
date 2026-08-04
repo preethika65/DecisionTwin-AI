@@ -1,0 +1,46 @@
+.dashboard {
+  padding: 30px;
+}
+
+.dashboard h1 {
+  text-align: center;
+  color: #1e293b;
+}
+
+.stats {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.card {
+  width: 220px;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.card p {
+  font-size: 18px;
+}
+
+/* Individual colors */
+.users {
+  background: #2563eb;   /* Blue */
+}
+
+.simulations {
+  background: #7c3aed;   /* Purple */
+}
+
+.accuracy {
+  background: #16a34a;   /* Green */
+}

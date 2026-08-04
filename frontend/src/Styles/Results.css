@@ -1,0 +1,24 @@
+.results-page {
+
+    padding:40px;
+    color:white;
+
+}
+
+
+.result-card {
+
+    background:#111827;
+    padding:30px;
+    width:450px;
+    border-radius:15px;
+    border:1px solid #334155;
+
+}
+
+
+.result-card h2 {
+
+    color:#38bdf8;
+
+}

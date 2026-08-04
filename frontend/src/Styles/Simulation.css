@@ -1,0 +1,20 @@
+.simulation-page{
+    padding:40px;
+    color:white;
+}
+
+
+.simulation-card{
+
+    background:#111827;
+    padding:30px;
+    border-radius:15px;
+    width:400px;
+    border:1px solid #334155;
+
+}
+
+
+.simulation-card h2{
+    color:#38bdf8;
+}
