@@ -6,12 +6,13 @@ import SyntheticUsers from "./pages/SyntheticUsers";
 import ScenarioCreator from "./pages/ScenarioCreator";
 import Simulation from "./pages/Simulation";
 import Results from "./pages/Results";
+import Interview from "./pages/InterviewMode";
+import PersonaSurvey from "./components/PersonaSurvey";
+
 
 import Navbar from "./components/Navbar";
 
-
 function App() {
-
   return (
     <BrowserRouter>
 
@@ -21,23 +22,41 @@ function App() {
 
         <Route path="/" element={<Home />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
 
-        <Route 
-        path="/synthetic-users" 
-        element={<SyntheticUsers />} />
+        <Route
+          path="/synthetic-users"
+          element={<SyntheticUsers />}
+        />
 
-        <Route 
-        path="/scenario" 
-        element={<ScenarioCreator />} />
+        <Route
+          path="/scenario"
+          element={<ScenarioCreator />}
+        />
 
-        <Route 
-        path="/simulation" 
-        element={<Simulation />} />
+        <Route
+          path="/survey"
+          element={<PersonaSurvey />}
+        />
 
-        <Route 
-        path="/results" 
-        element={<Results />} />
+        <Route
+          path="/interview"
+          element={<Interview />}
+        />
+
+        <Route
+          path="/simulation"
+          element={<Simulation />}
+        />
+
+        <Route
+          path="/results"
+          element={<Results />}
+        />
+        
 
       </Routes>
 

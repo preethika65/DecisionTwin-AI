@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import API from "../api/api";
+import PersonaSurvey from "../components/PersonaSurvey";
 import "../Styles/Dashboard.css";
 
 function Dashboard() {
 
   const [dashboard, setDashboard] = useState({
-    users: 500,
-    simulations: 25,
-    accuracy: "94%"
+    users: 0,
+    simulations: 0,
+    accuracy: "0%"
   });
-
 
   useEffect(() => {
 
@@ -23,7 +23,6 @@ function Dashboard() {
 
   }, []);
 
-
   return (
     <div className="dashboard">
 
@@ -36,12 +35,10 @@ function Dashboard() {
           <p>Synthetic Users</p>
         </div>
 
-
         <div className="card simulations">
           <h2>{dashboard.simulations}</h2>
           <p>Simulations</p>
         </div>
-
 
         <div className="card accuracy">
           <h2>{dashboard.accuracy}</h2>
@@ -49,6 +46,10 @@ function Dashboard() {
         </div>
 
       </div>
+
+      {/* Ask Synthetic Users */}
+
+      <PersonaSurvey />
 
     </div>
   );

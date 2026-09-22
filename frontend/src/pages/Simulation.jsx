@@ -36,14 +36,14 @@ function Simulation(){
         <div className="simulation-page">
 
 
-            <h1>AI Simulation</h1>
+            <h1>AI Simulation Engine</h1>
 
 
             {
                 loading && (
 
                     <h2>
-                        Running Simulation...
+                        🤖 Running Simulation...
                     </h2>
 
                 )
@@ -58,27 +58,42 @@ function Simulation(){
 
 
                         <h2>
-                            {result.scenario}
+                            Simulation Results
                         </h2>
 
 
                         <p>
-                            <b>Impact:</b> {result.impact}
+                            <b>Total Synthetic Users Tested:</b>
+                            {" "}
+                            {result.total_users}
                         </p>
 
 
                         <p>
-                            <b>Customer Change:</b> {result.customer_change}
+                            <b>Users Adopted:</b>
+                            {" "}
+                            {result.adopted_users}
                         </p>
 
 
                         <p>
-                            <b>Revenue Change:</b> {result.revenue_change}
+                            <b>Users Rejected:</b>
+                            {" "}
+                            {result.rejected_users}
                         </p>
 
 
                         <h3>
-                            Confidence: {result.confidence}
+                            Adoption Rate:
+                            {" "}
+                            {result.adoption_rate}
+                        </h3>
+
+
+                        <h3>
+                            Prediction:
+                            {" "}
+                            {result.prediction}
                         </h3>
 
 

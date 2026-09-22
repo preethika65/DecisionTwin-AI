@@ -3,62 +3,91 @@ import "../Styles/ScenarioCreator.css";
 
 function ScenarioCreator() {
 
-  const [scenario, setScenario] = useState({
-    scenario_name: "",
-    decision: "",
-    target_users: ""
+  const [formData, setFormData] = useState({
+    product: "",
+    audience: "",
+    research: "",
+    count: ""
   });
+
+  const [loading, setLoading] = useState(false);
 
 
   const handleChange = (e) => {
 
-    setScenario({
-      ...scenario,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value
     });
 
   };
 
 
-  const createScenario = () => {
+  const generatePersonas = async () => {
 
-    fetch("http://127.0.0.1:5000/api/scenario", {
-
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json"
-      },
-
-      body: JSON.stringify(scenario)
-
-    })
-
-    .then(response => response.json())
-
-    .then(data => {
-
-      alert(data.status);
+    setLoading(true);
 
 
-      // clear form after creation
-      setScenario({
-        scenario_name: "",
-        decision: "",
-        target_users: ""
-      });
+    try {
 
-    })
+      const response = await fetch(
+        "http://127.0.0.1:5000/api/generate-personas",
+        {
+          method: "POST",
 
-    .catch(error => {
+          headers: {
+            "Content-Type": "application/json"
+          },
 
-      console.log("Error:", error);
+          body: JSON.stringify(formData)
+        }
+      );
 
-      alert("Scenario creation failed");
 
-    });
+      const data = await response.json();
+
+
+      if(response.ok){
+
+        alert(
+          `${data.message} (${data.count} personas created)`
+        );
+
+
+        setFormData({
+          product:"",
+          audience:"",
+          research:"",
+          count:""
+        });
+
+      }
+      else{
+
+        alert(data.error);
+
+      }
+
+
+    }
+
+    catch(error){
+
+      console.log(error);
+
+      alert("Generation failed");
+
+    }
+
+
+    finally{
+
+      setLoading(false);
+
+    }
 
   };
+
 
 
   return (
@@ -66,62 +95,83 @@ function ScenarioCreator() {
     <div className="scenario-page">
 
 
-      <h1>Scenario Creator</h1>
+      <h1>
+        Synthetic Persona Generator
+      </h1>
 
 
       <p>
-        Create what-if scenarios for AI simulation.
+        Generate synthetic users for AI simulations.
       </p>
 
 
 
       <input
-
-        name="scenario_name"
-
-        placeholder="Scenario Name"
-
-        value={scenario.scenario_name}
-
+        name="product"
+        placeholder="Product description"
+        value={formData.product}
         onChange={handleChange}
-
       />
 
 
 
       <input
-
-        name="decision"
-
-        placeholder="Decision Change"
-
-        value={scenario.decision}
-
+        name="audience"
+        placeholder="Target audience"
+        value={formData.audience}
         onChange={handleChange}
-
       />
 
 
 
       <input
-
-        name="target_users"
-
-        placeholder="Target Users"
-
-        value={scenario.target_users}
-
+        name="research"
+        placeholder="Research objective"
+        value={formData.research}
         onChange={handleChange}
-
       />
 
 
 
-      <button onClick={createScenario}>
+      <input
+        name="count"
+        placeholder="Number of personas"
+        value={formData.count}
+        onChange={handleChange}
+      />
 
-        Create Scenario
+
+
+      <button 
+        onClick={generatePersonas}
+        disabled={loading}
+      >
+
+        {
+          loading 
+          ?
+          "🤖 Generating AI Personas..."
+          :
+          "Generate Personas"
+        }
 
       </button>
+
+
+
+      {
+        loading && (
+
+          <div className="loader">
+
+            AI is creating synthetic users...
+            <br/>
+            This may take a few seconds.
+
+          </div>
+
+        )
+      }
 
 
 

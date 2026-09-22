@@ -1,49 +1,56 @@
 import { Link } from "react-router-dom";
 import "../Styles/Navbar.css";
 
+function Navbar() {
 
-function Navbar(){
+  return (
 
-return(
+    <nav>
 
-<nav>
+      <h2>DecisionTwin AI</h2>
 
-<h2>DecisionTwin AI</h2>
+      <div className="links">
 
+        <Link to="/">
+          Home
+        </Link>
 
-<div className="links">
+        <Link to="/dashboard">
+          Dashboard
+        </Link>
 
-<Link to="/">Home</Link>
+        <Link to="/synthetic-users">
+          Synthetic Users
+        </Link>
 
-<Link to="/dashboard">
-Dashboard
-</Link>
+        <Link to="/scenario">
+          Scenario Creator
+        </Link>
 
-<Link to="/synthetic-users">
-Synthetic Users
-</Link>
+        {/* Survey Mode */}
+        <Link to="/survey">
+          Survey Mode
+        </Link>
 
+        {/* Interview Mode */}
+        <Link to="/interview">
+          Interview Mode
+        </Link>
 
-<Link to="/scenario">
-Scenario Creator
-</Link>
+        <Link to="/simulation">
+          Simulation
+        </Link>
 
+        <Link to="/results">
+          Results
+        </Link>
+        
 
-<Link to="/simulation">
-Simulation
-</Link>
+      </div>
 
+    </nav>
 
-<Link to="/results">
-Results
-</Link>
-
-
-</div>
-
-</nav>
-
-)
+  );
 
 }
 
